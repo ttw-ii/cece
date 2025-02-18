@@ -26,6 +26,11 @@
 </head>
 <body>
     <div id="content"></div>
+    <!-- 添加音频元素 -->
+    <audio id="bgmAudio" src="bgm.mp3" preload="auto"></audio>
+
+
+
 </body>
 <script>
     // 自定义文本和图片（替换成你的内容）
@@ -60,6 +65,10 @@
             img.src = surpriseImagePath; // 使用本地图片路径
             img.id = 'surprise-img';
             contentDiv.appendChild(img);
+
+            // 播放背景音乐
+            const audio = document.getElementById('bgmAudio');
+            audio.play();
         }
     }
  
