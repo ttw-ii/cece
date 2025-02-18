@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background: black;
+            color: white;
+            font-family: '宋体';
+            padding: 20px;
+            line-height: 1.6;
+        }
+        #content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .hidden { display: none; }
+        #surprise-img {
+            width: 100%;
+            animation: zoom 0.5s;
+        }
+        @keyframes zoom {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div id="content"></div>
+</body>
+<script>
+    // 自定义文本和图片（替换成你的内容）
+    const story = [
+        "深夜，你收到一条神秘消息...",
+        "消息内容是一串奇怪的数字：0408 0713 1120",
+        "你决定破译它，却发现数字对应着《周易》卦象...",
+        "突然，电脑屏幕开始闪烁！",
+        "一阵刺耳的噪音传来——"
+    ];
+
+     // 本地图片路径（相对于HTML文件的位置）
+    const surpriseImagePath = "surprise.png"; // 修改为图片的实际文件名和路径
+ 
+    // 逐步显示文字
+    let index = 0;
+    const contentDiv = document.getElementById('content');
+    
+    function showText() {
+        if (index < story.length) {
+            const p = document.createElement('p');
+            p.textContent = story[index];
+            contentDiv.appendChild(p);
+            // 模拟打字机效果
+            p.classList.add('hidden');
+            setTimeout(() => p.classList.remove('hidden'), 100);
+            index++;
+            setTimeout(showText, 3000); // 每3秒显示一行
+        } else {
+            // 最后弹出图片
+            const img = document.createElement('img');
+            img.src = surpriseImagePath; // 使用本地图片路径
+            img.id = 'surprise-img';
+            contentDiv.appendChild(img);
+        }
+    }
+ 
+    // 开始执行
+    showText();
+</script>
+</html>
